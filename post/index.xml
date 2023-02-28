@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Jaxson Chen</title>
+        <link>https://example.com/post/</link>
+        <description>Recent content in Posts on Jaxson Chen</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Tue, 28 Feb 2023 22:13:07 +0800</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>《数据库系统》复习</title>
+        <link>https://example.com/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/</link>
+        <pubDate>Tue, 28 Feb 2023 22:13:07 +0800</pubDate>
+        
+        <guid>https://example.com/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/</guid>
+        <description>&lt;img src="https://example.com/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/database_book.jpg" alt="Featured image of post 《数据库系统》复习" /&gt;&lt;h2 id=&#34;选择题&#34;&gt;选择题&lt;/h2&gt;
+&lt;h3 id=&#34;数据抽象&#34;&gt;数据抽象&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;物理层&lt;/strong&gt;描述数据实际上是怎么储存的，描述复杂的底层数据结构。
+例如数据在计算机内部是字节组成的存储块。
+也叫&lt;strong&gt;内模式&lt;/strong&gt;、存储模式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;逻辑层&lt;/strong&gt;描述数据库中储存什么数据以及这些数据间存在什么关系。
+例如如果选择关系模型存储数据，则程序员编写SQL语句来存储数据。
+也叫&lt;strong&gt;模式&lt;/strong&gt;、逻辑模式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;视图层&lt;/strong&gt;只描述数据库的某个部分。
+例如用户只需要看到数据库的一部分输出内容。
+也叫&lt;strong&gt;外模式&lt;/strong&gt;、子模式、用户模式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据模型&#34;&gt;数据模型&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;关系模型（SQL）&lt;/li&gt;
+&lt;li&gt;实体-联系模型（E-R）&lt;/li&gt;
+&lt;li&gt;基于对象数据模型&lt;/li&gt;
+&lt;li&gt;网状数据模型（偏底层）&lt;/li&gt;
+&lt;li&gt;层次数据模型（偏底层）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;b树&#34;&gt;B+树&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;非根非叶子结点有 $[n/2]$ 到 $n$ 个孩子&lt;/li&gt;
+&lt;li&gt;叶子结点有 $[(n-1)/2]$ 到 $n-1$ 个值&lt;/li&gt;
+&lt;li&gt;根结点（非叶子结点）最少有 $2$ 个孩子&lt;/li&gt;
+&lt;li&gt;根节点（叶子结点）有 $0$ 到 $n-1$ 个值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;事务&#34;&gt;事务&lt;/h3&gt;
+&lt;h4 id=&#34;事务的性质acid&#34;&gt;事务的性质（ACID）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;原子性
+事务的所有操作在数据库中要么成功，要么失败&lt;/li&gt;
+&lt;li&gt;一致性
+保持数据库中某些属性在事务完成后不变（具体业务具体分析）&lt;/li&gt;
+&lt;li&gt;隔离性
+每个事务感受不到有其他事务在并发执行&lt;/li&gt;
+&lt;li&gt;持久性
+一个事务成功完成后，对数据库的改变是永久的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;调度隔离级别&#34;&gt;调度隔离级别&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Read uncommitted(读未提交)
+如果一个事务已经开始写数据，则另外一个事务不允许同时进行写操作，但允许其他事务读此行数据
+就是一个事务可以读取另一个未提交事务的数据&lt;/li&gt;
+&lt;li&gt;Read committed(读提交)
+如果是一个读事务(线程)，则允许其他事务读写，如果是写事务将会禁止其他事务访问该行数据
+就是只能读到已经提交了的内容&lt;/li&gt;
+&lt;li&gt;Repeatable read(可重复读取)
+可重复读取是指在一个事务内，多次读同一个数据，在这个事务还没结束时，其他事务不能访问该数据(包括了读写)&lt;/li&gt;
+&lt;li&gt;Serializable(串行化)
+提供严格的事务隔离，它要求事务序列化执行，事务只能一个接着一个地执行，不能并发执行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;2nl&#34;&gt;2NL&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;增长阶段&lt;/strong&gt;：事务可以获得锁，但不能释放锁&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;收缩阶段&lt;/strong&gt;：事务可以释放锁，但不能获得锁
+简单来说，一旦获得锁就进入增长阶段，之后一旦释放锁就进入收缩阶段&lt;/li&gt;
+&lt;li&gt;一个事务开始时就全部上锁，结束时再全部释放锁&lt;/li&gt;
+&lt;li&gt;2NL协议可以确保冲突可串行化&lt;/li&gt;
+&lt;li&gt;2NL协议可能会&lt;strong&gt;导致死锁&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;基于日志的恢复&#34;&gt;基于日志的恢复&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;redo：使未完成的完成
+根据已有的日志继续进行，不会产生新日志&lt;/li&gt;
+&lt;li&gt;undo：使未完成的停止
+会写新日志&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;关系代数&#34;&gt;关系代数&lt;/h2&gt;
+&lt;h3 id=&#34;关系代数的基本操作&#34;&gt;关系代数的基本操作&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;选择：$\sigma$&lt;/li&gt;
+&lt;li&gt;投影：$\Pi$&lt;/li&gt;
+&lt;li&gt;并：$\cup$&lt;/li&gt;
+&lt;li&gt;集合差：$-$&lt;/li&gt;
+&lt;li&gt;笛卡尔积：$\times$&lt;/li&gt;
+&lt;li&gt;重命名：$\rho$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;关系代数的附加操作&#34;&gt;关系代数的附加操作&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;集合交：$\cap$&lt;/li&gt;
+&lt;li&gt;自然连接：$\Join$&lt;/li&gt;
+&lt;li&gt;除法：$\div$&lt;br&gt;
+举例：给定关系 $R(X,Y)$ 和 $S(Y,Z)$ ， $R$ 中的 $Y$ 和 $S$ 中的 $Y$ 同域，则 $R \div S$ 意为“得到两关系 $Y$ 属性值相同的 $X$ 属性值集合”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;sql&#34;&gt;SQL&lt;/h2&gt;
+&lt;h3 id=&#34;创建表&#34;&gt;创建表&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;CREAT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TABLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;works&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;VARCHAR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;PRIMARY&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;KEY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;salary&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;DECIMAL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company_name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;VARCHAR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FOREIGN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;KEY&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company_name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;REFERENCES&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;company_name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;修改表&#34;&gt;修改表&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;给表中新增属性&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ALTER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TABLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;works&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ADD&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;city&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;VARCHAR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;删除表中属性&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ALTER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TABLE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;works&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;DROP&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;COLUMN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;city&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;插入数据&#34;&gt;插入数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;INSERT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;INTO&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;works&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;salary&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;company_name&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;VALUES&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Mike&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;1000.00&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;AMD&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;更新数据&#34;&gt;更新数据&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;UPDATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;works&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SET&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;comapny_name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;INTEL&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Mike&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;查询数据&#34;&gt;查询数据&lt;/h3&gt;
+&lt;h4 id=&#34;聚合函数&#34;&gt;聚合函数&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;COUNT(col)&lt;/code&gt; 返回此列符合条件的行数
+&lt;code&gt;COUNT(*)&lt;/code&gt; 返回表中行数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AVG(col)&lt;/code&gt; 返回此数值列的平均值&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SUM(col)&lt;/code&gt; 返回此数值列的总和
+聚合函数不能用在&lt;code&gt;WHERE&lt;/code&gt;语句中，只能用在&lt;code&gt;SELECT&lt;/code&gt;和&lt;code&gt;HAVING&lt;/code&gt;中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;gourp-by-和-having&#34;&gt;GOURP BY 和 HAVING&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;GROUP BY col&lt;/code&gt; 按此属性对查询的另一属性分组&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;按&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;city&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;分组，查询每个“至少有两位员工的城市”中有多少位员工&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;COUNT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;city&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;works&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;GROUP&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BY&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;city&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;HAVING&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;COUNT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;套路是：查询两列，其中一列用来分组，另一列用来计算&lt;/p&gt;
+&lt;h3 id=&#34;视图的创建&#34;&gt;视图的创建&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-SQL&#34; data-lang=&#34;SQL&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;CREATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;VIEW&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;emplyee_in_NewYork&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;AS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;salary&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;works&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WHERE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;city&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;NewYork&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;关系理论&#34;&gt;关系理论&lt;/h2&gt;
+&lt;h3 id=&#34;码的概念&#34;&gt;码的概念&lt;/h3&gt;
+&lt;h4 id=&#34;码超码&#34;&gt;码（超码）&lt;/h4&gt;
+&lt;p&gt;能够&lt;strong&gt;唯一标识&lt;/strong&gt;一条记录的属性或属性集&lt;/p&gt;
+&lt;h4 id=&#34;候选码&#34;&gt;候选码&lt;/h4&gt;
+&lt;p&gt;能够&lt;strong&gt;唯一标识&lt;/strong&gt;一条记录的&lt;strong&gt;最小属性集&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;主码&#34;&gt;主码&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;某个&lt;/strong&gt;能够&lt;strong&gt;唯一标识&lt;/strong&gt;一条记录的&lt;strong&gt;最小属性集&lt;/strong&gt;（是从候选码里人为挑选的一条）&lt;/p&gt;
+&lt;h4 id=&#34;主属性&#34;&gt;主属性&lt;/h4&gt;
+&lt;p&gt;包含在任一候选码中的属性称主属性。&lt;br&gt;
+简单来说，主属性集是&lt;strong&gt;候选码所有属性的并集&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;非主属性&#34;&gt;非主属性&lt;/h4&gt;
+&lt;p&gt;不包含在候选码中的属性&lt;/p&gt;
+&lt;h3 id=&#34;依赖&#34;&gt;依赖&lt;/h3&gt;
+&lt;p&gt;简单来说就是，若属性X的属性值一样（$X_1=X_2$），则属性Y中的属性值就一样（$Y_1=Y_2$），那么 $Y$ 依赖于 $X$ ，即 $X\rightarrow Y$。例如：学号决定了姓名，学号相同则姓名必然相同，那么姓名就依赖于学号。&lt;/p&gt;
+&lt;h4 id=&#34;平凡依赖&#34;&gt;平凡依赖&lt;/h4&gt;
+&lt;p&gt;$Y$ 是 $X$ 的子集。例如： $ABC\rightarrow B$&lt;/p&gt;
+&lt;h4 id=&#34;非平凡依赖&#34;&gt;非平凡依赖&lt;/h4&gt;
+&lt;p&gt;$Y$ 不是 $X$ 的子集。&lt;/p&gt;
+&lt;h4 id=&#34;完全依赖&#34;&gt;完全依赖&lt;/h4&gt;
+&lt;p&gt;例如：学号，课程号可以推出成绩，而只有学号或者课程号就推不出成绩，则&lt;strong&gt;成绩&lt;/strong&gt;完全依赖于&lt;strong&gt;学号，课程号&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;部分依赖&#34;&gt;部分依赖&lt;/h4&gt;
+&lt;p&gt;例如：学号，课程号可以推出姓名，而只有学号也可以推出姓名，则&lt;strong&gt;姓名&lt;/strong&gt;部分依赖于&lt;strong&gt;学号，课程号&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;传递依赖&#34;&gt;传递依赖&lt;/h4&gt;
+&lt;p&gt;例如：学号可以推出姓名，姓名可以推出姓氏，则&lt;strong&gt;姓氏&lt;/strong&gt;传递依赖于&lt;strong&gt;学号&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;闭包&#34;&gt;闭包&lt;/h3&gt;
+&lt;p&gt;闭包就是由一个属性直接或间接推导出的所有属性的集合。&lt;br&gt;
+例如：$F={a\rightarrow b,b\rightarrow c,a\rightarrow d,e\rightarrow f}$ ，由 $a$ 可直接得到 $b$ 和 $d$ ，间接得到 $c$ ，则 $a$ 的闭包就是 $(a)^+_F={a,b,c,d}$。&lt;/p&gt;
+&lt;h3 id=&#34;范式&#34;&gt;范式&lt;/h3&gt;
+&lt;h4 id=&#34;1nf&#34;&gt;1NF&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;所有属性都是不可分割的数据项。&lt;/li&gt;
+&lt;li&gt;如果某个属性，例如学校，还可以继续拆分为高中和大学，就不满足1NF了。&lt;/li&gt;
+&lt;li&gt;1NF是关系数据库需要满足的最低要求。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2nf&#34;&gt;2NF&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;在满足1NF的前提下，不包含非主属性对码的部分函数依赖（即每一个非主属性都完全函数依赖于码）。&lt;/li&gt;
+&lt;li&gt;例如在关系R中，码是学号和班级，非主属性是姓名，因为通过学号就能直接推出姓名了，不需要班级，此处姓名就部分依赖于码了，不满足2NF。&lt;/li&gt;
+&lt;li&gt;例：若码是 $AB$ ，$F={A\rightarrow C, AB\rightarrow D}$ ，对于 $C$ ，只需要 $A$ 就能推出，那么 $C$ 部分函数依赖于码 $AB$ ，这种情况就不是2NF。&lt;br&gt;
+若要分解为2NF，只需将不符合要求的拿出来，即分为 $R_1{A, B, D}$ 和 $R_2{A, C}$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3nf&#34;&gt;3NF&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;在满足2NF的前提下，不包含&lt;strong&gt;非主属性&lt;/strong&gt;对码的传递函数依赖（即码应该直接决定非主属性，不能间接决定）。&lt;/li&gt;
+&lt;li&gt;例如在关系R中，码是客户姓名，非主属性是订单编号和订单负责人，通过客户姓名可以推出他的订单编号，再通过订单编号能推出订单负责人，这种情况下客户姓名和订单负责人是间接决定的，存在传递函数依赖，不满足3NF。&lt;/li&gt;
+&lt;li&gt;例：若码是 $AB$ ，$F={AB\rightarrow C, C\rightarrow D}$ ，这里不存在部分函数依赖。但是对于 $D$ ，需要 $AB$ 推出 $C$ 后才能间接推出 $D$ ，那么 $D$ 传递函数依赖于 $AB$ ，不满足3NF。&lt;br&gt;
+若要分解为3NF，同样将不符合要求的拿出来，即分为 $R_1{A,B,C}$ 和 $R_2{C, D}$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;bcnf&#34;&gt;BCNF&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;消除&lt;strong&gt;任何属性&lt;/strong&gt;对候选码的传递依赖，即每一个决定因素都包含码，表现为在函数依赖集当中，左边的都包含候选码。&lt;/li&gt;
+&lt;li&gt;例：若 $R=(A,B,C)$，$F={AC\rightarrow B,AB\rightarrow C,B\rightarrow C}$，候选码则是 $AC$ 和 $AB$ 。这里&lt;strong&gt;不存在非主属性&lt;/strong&gt;的部分函数依赖，但对于 $B\rightarrow C$ 来说，决定因素 $B$ 不包含码，因此它不是BCNF。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;考题&#34;&gt;考题&lt;/h3&gt;
+&lt;h4 id=&#34;求候选码&#34;&gt;求候选码&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;观察函数依赖，只出现在左边的一定属于候选码，只出现在右边的一定不属于候选码，两边都出现的有可能是候选码&lt;/li&gt;
+&lt;li&gt;对只出现在左边的求闭包，如果可以推出全部属性则加入候选码，如果不能则和可能属于候选码的属性进行组合求闭包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;范式级别判断&#34;&gt;范式级别判断&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;求候选码&lt;/li&gt;
+&lt;li&gt;写出非主属性、候选码
+非主属性就是未出现在候选码中的属性&lt;/li&gt;
+&lt;li&gt;判断2NF（判断非主属性部分依赖）:
+观察&lt;strong&gt;非主属性&lt;/strong&gt;的左侧是否&lt;strong&gt;完整&lt;/strong&gt;出现了任一候选码（非主属性必须由完整的任一候选码推出），若是则符合2NF&lt;/li&gt;
+&lt;li&gt;判断3NF（判断非主属性传递依赖）：
+观察所有非主属性是否是由候选码直接推出，若是则符合3NF&lt;/li&gt;
+&lt;li&gt;判断BCNF
+观察每个函数依赖左侧是否包含任一候选码，若是则符合BCNF&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;求最小依赖集&#34;&gt;求最小依赖集&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;拆分右侧
+&lt;ul&gt;
+&lt;li&gt;例如将 $A\rightarrow BC$ 拆为 $A\rightarrow B$ 和 $A\rightarrow C$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;去除自身求闭包
+&lt;ul&gt;
+&lt;li&gt;若有$AB\rightarrow C$，$BC\rightarrow E$，$AE\rightarrow G$，去除 $AB$ 自身能推出的 $C$ ，基于剩余的依赖关系求 $AB$ 的闭包，若 $AB$ 通过剩余的关系也能求出 $C$ ，那么删除 $AB\rightarrow C$ 这个依赖关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;左侧最小化
+&lt;ul&gt;
+&lt;li&gt;例如目前保留的关系有 $ABC\rightarrow D$ ，观察左边的 $ABC$ 当中，$A$ 是否能由 $BC$ 推出，$B$ 是否能由 $AC$ 推出，$C$ 是否能由 $AB$ 推出。假设 $C$ 能被 $AB$ 推出，那么左侧去掉 $C$，更新为 $AB\rightarrow D$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;3nf分解&#34;&gt;3NF分解&lt;/h4&gt;
+&lt;p&gt;设有属性集 $U$，函数依赖集 $F$，其模式分解后应得到多个 $U$ 的子集&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;求出最小函数依赖集 $F_{min}$&lt;/li&gt;
+&lt;li&gt;观察 $U$，找出其中未在 $F_{min}$ 中出现过的属性，将其分为一个集合。
+例如 $U={A,B,C,D,E,G}$ ，但 $F_{min}$ 中没有关于 $G$ 的依赖关系，则单独划分出 ${G}$&lt;/li&gt;
+&lt;li&gt;观察 $F_{min}$ ，若有多个依赖关系的决定因素（即左侧）相同，则均划分到同一个集合中。若没有相同的，则仅将该依赖关系划分到同一个集合。
+例如 $F_{min}$ 中有 ${A\rightarrow B,A\rightarrow C,D\rightarrow E}$ 则划分出 ${ABC}$ 和 ${DE}$&lt;/li&gt;
+&lt;li&gt;求出 $F_{min}$ 的候选码，若候选码未上述分类中出现，则单独将候选码分为
+一类。
+例如上述 $F_{min}$ 的候选码为 $ADG$，可知其未出现在各分类中，因此再划分一个集合 ${ADG}$。&lt;/li&gt;
+&lt;li&gt;由上述举例可知，其最终的模式分解为 ${G},{ABC},{DE}, {ADG}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;bcnf分解&#34;&gt;BCNF分解&lt;/h4&gt;
+&lt;p&gt;没学会&lt;/p&gt;
+&lt;h4 id=&#34;判断是不是候选码&#34;&gt;判断是不是候选码&lt;/h4&gt;
+&lt;p&gt;利用候选码的性质判断。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;求闭包，看闭包是否等于属性集&lt;/li&gt;
+&lt;li&gt;对要判断的属性集的子集求闭包，看子集的闭包是否等于属性集，若不是则原属性集为候选码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;事务调度&#34;&gt;事务调度&lt;/h2&gt;
+&lt;h3 id=&#34;事务调度的准则&#34;&gt;事务调度的准则&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;一组事务的调度必须保证：包含了所有事务的操作指令；一个事务内部的指令顺序必须保持不变&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;并行事务调度&lt;/strong&gt;必须保证：&lt;strong&gt;可串行化&lt;/strong&gt;，将所有可能的串行调度结果推演一遍，对于某个具体的并行调度再执行一遍，看是否能与某个串行调度的结果相同&lt;/li&gt;
+&lt;li&gt;判断可串行化的充分条件：冲突可串行化（冲突可串行化一定是可串行化调度，但可串行化调度不一定是冲突可串行化）
+冲突可串行化调度即不交换不同事务的冲突操作次序，也不交换同一事务的两个操作的次序。但可以交换不同事务对不同数据各种操作次序，也可以交换不同事务对同一数据的读取操作次序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;封锁&#34;&gt;封锁&lt;/h3&gt;
+&lt;h4 id=&#34;x锁&#34;&gt;X锁&lt;/h4&gt;
+&lt;p&gt;写锁，某事务对数据对象上锁后，可读取和修改该数据对象，其他事务不可再对该数据对象添加锁&lt;br&gt;
+表示方法：上锁Xlock()、释放锁Unlock()&lt;/p&gt;
+&lt;h4 id=&#34;s锁&#34;&gt;S锁&lt;/h4&gt;
+&lt;p&gt;读锁，某事务对数据对象上锁后，可读取但不可修改该数据对象，其他事务可以对该数据对象添加S锁，但不能添加X锁
+表示方法：上锁Slock()、释放锁Unlock()&lt;/p&gt;
+&lt;h4 id=&#34;封锁协议&#34;&gt;封锁协议&lt;/h4&gt;
+&lt;h5 id=&#34;一级封锁协议&#34;&gt;一级封锁协议&lt;/h5&gt;
+&lt;p&gt;写前加写锁，事务结束释放写锁；可防止丢失修改&lt;/p&gt;
+&lt;h5 id=&#34;二级封锁协议&#34;&gt;二级封锁协议&lt;/h5&gt;
+&lt;p&gt;写前加写锁，读前加读锁，读完释放读锁，事务结束释放写锁；可防止丢失修改和读脏数据&lt;/p&gt;
+&lt;h5 id=&#34;三级封锁协议常用支持一致性维护&#34;&gt;三级封锁协议（常用：支持一致性维护）&lt;/h5&gt;
+&lt;p&gt;写前加写锁，读前加读锁，事务结束释放各锁；可防止丢失修改、读脏数据和不可重复读
+如果所有事务均遵循三级封锁协议，由于其隔离级别高，那么这些事务无论怎样交叉并行，都是可串性化的调度&lt;/p&gt;
+&lt;h5 id=&#34;两段锁协议2pl&#34;&gt;两段锁协议（2PL）&lt;/h5&gt;
+&lt;p&gt;三级封锁协议可以保证并发操作的正确性，但由于其太过严苛，对并发度有负面影响。三级封锁协议实际是两段锁协议的特例，是更严格的两段锁协议。&lt;br&gt;
+两段锁协议要求：事务在对任何数据进行读写前，需要获得对该数据的封锁；而当事务在释放任何一个封锁后，不可再获得任何其他封锁。&lt;strong&gt;即：在最后再进行Unlock&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;事务遵循两段锁协议是可串性化的充分条件&lt;/strong&gt;，遵循两段锁协议是可能发生死锁的&lt;/p&gt;
+&lt;h3 id=&#34;考题-1&#34;&gt;考题&lt;/h3&gt;
+&lt;h4 id=&#34;求串行调度结果&#34;&gt;求串行调度结果&lt;/h4&gt;
+&lt;p&gt;题目会给出两个调度 $T_1$ 、$T_2$ ,分别以$T_1$$T_2$ 和 $T_2$$T_1$ 的顺序运行调度，求出结果即可。&lt;/p&gt;
+&lt;h4 id=&#34;判断并行调度是否正确&#34;&gt;判断并行调度是否正确&lt;/h4&gt;
+&lt;p&gt;题目给出并行调度，运行之后和第一问的结果作比较，只要&lt;strong&gt;和串行调度的任意一个顺序结果相同&lt;/strong&gt;则说明并行调度正确，否则错误。&lt;/p&gt;
+&lt;h4 id=&#34;将并行调度改为遵守2pl并求出结果&#34;&gt;将并行调度改为遵守2PL并求出结果&lt;/h4&gt;
+&lt;p&gt;先按照原调度运行，在读写操作前加锁Xlock(),此时另一调度若想进行读写操作需要wait直至运行中的调度Unlock()。
+一个调度只要Unlock()一次就不能再上锁了，所以&lt;strong&gt;Unlock()要放在一个调度&lt;/strong&gt;最后。&lt;/p&gt;
+&lt;h2 id=&#34;e-r图数据库设计&#34;&gt;E-R图（数据库设计）&lt;/h2&gt;
+&lt;h3 id=&#34;画e-r图&#34;&gt;画E-R图&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;矩形：实体集&lt;/li&gt;
+&lt;li&gt;双矩形：弱实体集
+弱实体集没有主码，依赖于标识实体集&lt;/li&gt;
+&lt;li&gt;菱形：联系集&lt;/li&gt;
+&lt;li&gt;椭圆：属性&lt;/li&gt;
+&lt;li&gt;双椭圆：多值属性&lt;/li&gt;
+&lt;li&gt;虚椭圆：派生属性&lt;/li&gt;
+&lt;li&gt;双线：一个实体集全部参与到联系集中&lt;/li&gt;
+&lt;li&gt;一对一（1:1） 指向两边的箭头&lt;/li&gt;
+&lt;li&gt;一对多（1:n） 一指向多的箭头&lt;/li&gt;
+&lt;li&gt;多对多（m:n） 无箭头&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;e-r图转换为关系模型&#34;&gt;E-R图转换为关系模型&lt;/h3&gt;
+&lt;p&gt;第一步：将各个实体的名字转换为各个关系模式的名字&lt;br&gt;
+第二步：实体的属性就是关系的属性，实体的码就是关系的码&lt;br&gt;
+第三步：实体间联系的转换&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1对1联系：在任意一方加入对方的主码并设为其外码，并加入联系本身的属性&lt;/li&gt;
+&lt;li&gt;1对n联系：将1方的主码加入n方作为外码，并同时将联系的属性加入n方&lt;/li&gt;
+&lt;li&gt;n对m联系：将联系本身转换为一个关系模式，将联系双方的主码加入其中设为码，并将联系的属性也加入其中&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

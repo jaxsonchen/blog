@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='应付数据库考试写的复习资料'>
+<title>《数据库系统》复习</title>
+
+<link rel='canonical' href='https://example.com/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='《数据库系统》复习'>
+<meta property='og:description' content='应付数据库考试写的复习资料'>
+<meta property='og:url' content='https://example.com/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/'>
+<meta property='og:site_name' content='Jaxson Chen'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-02-28T22:13:07&#43;08:00'/><meta property='article:modified_time' content='2023-02-28T22:13:07&#43;08:00'/><meta property='og:image' content='https://example.com/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/database_book.jpg' />
+<meta name="twitter:title" content="《数据库系统》复习">
+<meta name="twitter:description" content="应付数据库考试写的复习资料"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/database_book.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "light");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hudd241544dfe3bf22675b366087f31210_167490_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🌍</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Jaxson Chen</a></h1>
+            <h2 class="site-description">Panzer Vor!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#选择题">选择题</a>
+      <ol>
+        <li><a href="#数据抽象">数据抽象</a></li>
+        <li><a href="#数据模型">数据模型</a></li>
+        <li><a href="#b树">B+树</a></li>
+        <li><a href="#事务">事务</a>
+          <ol>
+            <li><a href="#事务的性质acid">事务的性质（ACID）</a></li>
+            <li><a href="#调度隔离级别">调度隔离级别</a></li>
+            <li><a href="#2nl">2NL</a></li>
+            <li><a href="#基于日志的恢复">基于日志的恢复</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#关系代数">关系代数</a>
+      <ol>
+        <li><a href="#关系代数的基本操作">关系代数的基本操作</a></li>
+        <li><a href="#关系代数的附加操作">关系代数的附加操作</a></li>
+      </ol>
+    </li>
+    <li><a href="#sql">SQL</a>
+      <ol>
+        <li><a href="#创建表">创建表</a></li>
+        <li><a href="#修改表">修改表</a></li>
+        <li><a href="#插入数据">插入数据</a></li>
+        <li><a href="#更新数据">更新数据</a></li>
+        <li><a href="#查询数据">查询数据</a>
+          <ol>
+            <li><a href="#聚合函数">聚合函数</a></li>
+            <li><a href="#gourp-by-和-having">GOURP BY 和 HAVING</a></li>
+          </ol>
+        </li>
+        <li><a href="#视图的创建">视图的创建</a></li>
+      </ol>
+    </li>
+    <li><a href="#关系理论">关系理论</a>
+      <ol>
+        <li><a href="#码的概念">码的概念</a>
+          <ol>
+            <li><a href="#码超码">码（超码）</a></li>
+            <li><a href="#候选码">候选码</a></li>
+            <li><a href="#主码">主码</a></li>
+            <li><a href="#主属性">主属性</a></li>
+            <li><a href="#非主属性">非主属性</a></li>
+          </ol>
+        </li>
+        <li><a href="#依赖">依赖</a>
+          <ol>
+            <li><a href="#平凡依赖">平凡依赖</a></li>
+            <li><a href="#非平凡依赖">非平凡依赖</a></li>
+            <li><a href="#完全依赖">完全依赖</a></li>
+            <li><a href="#部分依赖">部分依赖</a></li>
+            <li><a href="#传递依赖">传递依赖</a></li>
+          </ol>
+        </li>
+        <li><a href="#闭包">闭包</a></li>
+        <li><a href="#范式">范式</a>
+          <ol>
+            <li><a href="#1nf">1NF</a></li>
+            <li><a href="#2nf">2NF</a></li>
+            <li><a href="#3nf">3NF</a></li>
+            <li><a href="#bcnf">BCNF</a></li>
+          </ol>
+        </li>
+        <li><a href="#考题">考题</a>
+          <ol>
+            <li><a href="#求候选码">求候选码</a></li>
+            <li><a href="#范式级别判断">范式级别判断</a></li>
+            <li><a href="#求最小依赖集">求最小依赖集</a></li>
+            <li><a href="#3nf分解">3NF分解</a></li>
+            <li><a href="#bcnf分解">BCNF分解</a></li>
+            <li><a href="#判断是不是候选码">判断是不是候选码</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#事务调度">事务调度</a>
+      <ol>
+        <li><a href="#事务调度的准则">事务调度的准则</a></li>
+        <li><a href="#封锁">封锁</a>
+          <ol>
+            <li><a href="#x锁">X锁</a></li>
+            <li><a href="#s锁">S锁</a></li>
+            <li><a href="#封锁协议">封锁协议</a></li>
+          </ol>
+        </li>
+        <li><a href="#考题-1">考题</a>
+          <ol>
+            <li><a href="#求串行调度结果">求串行调度结果</a></li>
+            <li><a href="#判断并行调度是否正确">判断并行调度是否正确</a></li>
+            <li><a href="#将并行调度改为遵守2pl并求出结果">将并行调度改为遵守2PL并求出结果</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#e-r图数据库设计">E-R图（数据库设计）</a>
+      <ol>
+        <li><a href="#画e-r图">画E-R图</a></li>
+        <li><a href="#e-r图转换为关系模型">E-R图转换为关系模型</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/">
+                <img src="/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/database_book_hu860af0e629364f9120411db6ef39f818_92666_800x0_resize_q75_box.jpg"
+                        srcset="/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/database_book_hu860af0e629364f9120411db6ef39f818_92666_800x0_resize_q75_box.jpg 800w, /p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/database_book_hu860af0e629364f9120411db6ef39f818_92666_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="337" 
+                        loading="lazy"
+                        alt="Featured image of post 《数据库系统》复习" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/">《数据库系统》复习</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            应付数据库考试写的复习资料
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 28, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 10 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="选择题">选择题</h2>
+<h3 id="数据抽象">数据抽象</h3>
+<ul>
+<li><strong>物理层</strong>描述数据实际上是怎么储存的，描述复杂的底层数据结构。
+例如数据在计算机内部是字节组成的存储块。
+也叫<strong>内模式</strong>、存储模式</li>
+<li><strong>逻辑层</strong>描述数据库中储存什么数据以及这些数据间存在什么关系。
+例如如果选择关系模型存储数据，则程序员编写SQL语句来存储数据。
+也叫<strong>模式</strong>、逻辑模式</li>
+<li><strong>视图层</strong>只描述数据库的某个部分。
+例如用户只需要看到数据库的一部分输出内容。
+也叫<strong>外模式</strong>、子模式、用户模式</li>
+</ul>
+<h3 id="数据模型">数据模型</h3>
+<ul>
+<li>关系模型（SQL）</li>
+<li>实体-联系模型（E-R）</li>
+<li>基于对象数据模型</li>
+<li>网状数据模型（偏底层）</li>
+<li>层次数据模型（偏底层）</li>
+</ul>
+<h3 id="b树">B+树</h3>
+<ul>
+<li>非根非叶子结点有 $[n/2]$ 到 $n$ 个孩子</li>
+<li>叶子结点有 $[(n-1)/2]$ 到 $n-1$ 个值</li>
+<li>根结点（非叶子结点）最少有 $2$ 个孩子</li>
+<li>根节点（叶子结点）有 $0$ 到 $n-1$ 个值</li>
+</ul>
+<h3 id="事务">事务</h3>
+<h4 id="事务的性质acid">事务的性质（ACID）</h4>
+<ul>
+<li>原子性
+事务的所有操作在数据库中要么成功，要么失败</li>
+<li>一致性
+保持数据库中某些属性在事务完成后不变（具体业务具体分析）</li>
+<li>隔离性
+每个事务感受不到有其他事务在并发执行</li>
+<li>持久性
+一个事务成功完成后，对数据库的改变是永久的</li>
+</ul>
+<h4 id="调度隔离级别">调度隔离级别</h4>
+<ol>
+<li>Read uncommitted(读未提交)
+如果一个事务已经开始写数据，则另外一个事务不允许同时进行写操作，但允许其他事务读此行数据
+就是一个事务可以读取另一个未提交事务的数据</li>
+<li>Read committed(读提交)
+如果是一个读事务(线程)，则允许其他事务读写，如果是写事务将会禁止其他事务访问该行数据
+就是只能读到已经提交了的内容</li>
+<li>Repeatable read(可重复读取)
+可重复读取是指在一个事务内，多次读同一个数据，在这个事务还没结束时，其他事务不能访问该数据(包括了读写)</li>
+<li>Serializable(串行化)
+提供严格的事务隔离，它要求事务序列化执行，事务只能一个接着一个地执行，不能并发执行</li>
+</ol>
+<h4 id="2nl">2NL</h4>
+<ul>
+<li><strong>增长阶段</strong>：事务可以获得锁，但不能释放锁</li>
+<li><strong>收缩阶段</strong>：事务可以释放锁，但不能获得锁
+简单来说，一旦获得锁就进入增长阶段，之后一旦释放锁就进入收缩阶段</li>
+<li>一个事务开始时就全部上锁，结束时再全部释放锁</li>
+<li>2NL协议可以确保冲突可串行化</li>
+<li>2NL协议可能会<strong>导致死锁</strong></li>
+</ul>
+<h4 id="基于日志的恢复">基于日志的恢复</h4>
+<ul>
+<li>redo：使未完成的完成
+根据已有的日志继续进行，不会产生新日志</li>
+<li>undo：使未完成的停止
+会写新日志</li>
+</ul>
+<h2 id="关系代数">关系代数</h2>
+<h3 id="关系代数的基本操作">关系代数的基本操作</h3>
+<ol>
+<li>选择：$\sigma$</li>
+<li>投影：$\Pi$</li>
+<li>并：$\cup$</li>
+<li>集合差：$-$</li>
+<li>笛卡尔积：$\times$</li>
+<li>重命名：$\rho$</li>
+</ol>
+<h3 id="关系代数的附加操作">关系代数的附加操作</h3>
+<ol>
+<li>集合交：$\cap$</li>
+<li>自然连接：$\Join$</li>
+<li>除法：$\div$<br>
+举例：给定关系 $R(X,Y)$ 和 $S(Y,Z)$ ， $R$ 中的 $Y$ 和 $S$ 中的 $Y$ 同域，则 $R \div S$ 意为“得到两关系 $Y$ 属性值相同的 $X$ 属性值集合”</li>
+</ol>
+<h2 id="sql">SQL</h2>
+<h3 id="创建表">创建表</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="n">CREAT</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">works</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">salary</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">company_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">company_name</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">company</span><span class="p">(</span><span class="n">company_name</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="修改表">修改表</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="err">给表中新增属性</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">works</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ADD</span><span class="w"> </span><span class="n">city</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">删除表中属性</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">works</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">city</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="插入数据">插入数据</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">works</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;salary&#39;</span><span class="p">,</span><span class="s1">&#39;company_name&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">VALUES</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="s1">&#39;Mike&#39;</span><span class="p">,</span><span class="s1">&#39;1000.00&#39;</span><span class="p">,</span><span class="s1">&#39;AMD&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="更新数据">更新数据</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">works</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SET</span><span class="w"> </span><span class="n">comapny_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;INTEL&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Mike&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="查询数据">查询数据</h3>
+<h4 id="聚合函数">聚合函数</h4>
+<ul>
+<li><code>COUNT(col)</code> 返回此列符合条件的行数
+<code>COUNT(*)</code> 返回表中行数</li>
+<li><code>AVG(col)</code> 返回此数值列的平均值</li>
+<li><code>SUM(col)</code> 返回此数值列的总和
+聚合函数不能用在<code>WHERE</code>语句中，只能用在<code>SELECT</code>和<code>HAVING</code>中</li>
+</ul>
+<h4 id="gourp-by-和-having">GOURP BY 和 HAVING</h4>
+<p><code>GROUP BY col</code> 按此属性对查询的另一属性分组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="err">按</span><span class="n">city</span><span class="err">分组，查询每个“至少有两位员工的城市”中有多少位员工</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">city</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">works</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">city</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>套路是：查询两列，其中一列用来分组，另一列用来计算</p>
+<h3 id="视图的创建">视图的创建</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">emplyee_in_NewYork</span><span class="w"> </span><span class="k">AS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">works</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;NewYork&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="关系理论">关系理论</h2>
+<h3 id="码的概念">码的概念</h3>
+<h4 id="码超码">码（超码）</h4>
+<p>能够<strong>唯一标识</strong>一条记录的属性或属性集</p>
+<h4 id="候选码">候选码</h4>
+<p>能够<strong>唯一标识</strong>一条记录的<strong>最小属性集</strong></p>
+<h4 id="主码">主码</h4>
+<p><strong>某个</strong>能够<strong>唯一标识</strong>一条记录的<strong>最小属性集</strong>（是从候选码里人为挑选的一条）</p>
+<h4 id="主属性">主属性</h4>
+<p>包含在任一候选码中的属性称主属性。<br>
+简单来说，主属性集是<strong>候选码所有属性的并集</strong></p>
+<h4 id="非主属性">非主属性</h4>
+<p>不包含在候选码中的属性</p>
+<h3 id="依赖">依赖</h3>
+<p>简单来说就是，若属性X的属性值一样（$X_1=X_2$），则属性Y中的属性值就一样（$Y_1=Y_2$），那么 $Y$ 依赖于 $X$ ，即 $X\rightarrow Y$。例如：学号决定了姓名，学号相同则姓名必然相同，那么姓名就依赖于学号。</p>
+<h4 id="平凡依赖">平凡依赖</h4>
+<p>$Y$ 是 $X$ 的子集。例如： $ABC\rightarrow B$</p>
+<h4 id="非平凡依赖">非平凡依赖</h4>
+<p>$Y$ 不是 $X$ 的子集。</p>
+<h4 id="完全依赖">完全依赖</h4>
+<p>例如：学号，课程号可以推出成绩，而只有学号或者课程号就推不出成绩，则<strong>成绩</strong>完全依赖于<strong>学号，课程号</strong></p>
+<h4 id="部分依赖">部分依赖</h4>
+<p>例如：学号，课程号可以推出姓名，而只有学号也可以推出姓名，则<strong>姓名</strong>部分依赖于<strong>学号，课程号</strong></p>
+<h4 id="传递依赖">传递依赖</h4>
+<p>例如：学号可以推出姓名，姓名可以推出姓氏，则<strong>姓氏</strong>传递依赖于<strong>学号</strong></p>
+<h3 id="闭包">闭包</h3>
+<p>闭包就是由一个属性直接或间接推导出的所有属性的集合。<br>
+例如：$F={a\rightarrow b,b\rightarrow c,a\rightarrow d,e\rightarrow f}$ ，由 $a$ 可直接得到 $b$ 和 $d$ ，间接得到 $c$ ，则 $a$ 的闭包就是 $(a)^+_F={a,b,c,d}$。</p>
+<h3 id="范式">范式</h3>
+<h4 id="1nf">1NF</h4>
+<ul>
+<li>所有属性都是不可分割的数据项。</li>
+<li>如果某个属性，例如学校，还可以继续拆分为高中和大学，就不满足1NF了。</li>
+<li>1NF是关系数据库需要满足的最低要求。</li>
+</ul>
+<h4 id="2nf">2NF</h4>
+<ul>
+<li>在满足1NF的前提下，不包含非主属性对码的部分函数依赖（即每一个非主属性都完全函数依赖于码）。</li>
+<li>例如在关系R中，码是学号和班级，非主属性是姓名，因为通过学号就能直接推出姓名了，不需要班级，此处姓名就部分依赖于码了，不满足2NF。</li>
+<li>例：若码是 $AB$ ，$F={A\rightarrow C, AB\rightarrow D}$ ，对于 $C$ ，只需要 $A$ 就能推出，那么 $C$ 部分函数依赖于码 $AB$ ，这种情况就不是2NF。<br>
+若要分解为2NF，只需将不符合要求的拿出来，即分为 $R_1{A, B, D}$ 和 $R_2{A, C}$。</li>
+</ul>
+<h4 id="3nf">3NF</h4>
+<ul>
+<li>在满足2NF的前提下，不包含<strong>非主属性</strong>对码的传递函数依赖（即码应该直接决定非主属性，不能间接决定）。</li>
+<li>例如在关系R中，码是客户姓名，非主属性是订单编号和订单负责人，通过客户姓名可以推出他的订单编号，再通过订单编号能推出订单负责人，这种情况下客户姓名和订单负责人是间接决定的，存在传递函数依赖，不满足3NF。</li>
+<li>例：若码是 $AB$ ，$F={AB\rightarrow C, C\rightarrow D}$ ，这里不存在部分函数依赖。但是对于 $D$ ，需要 $AB$ 推出 $C$ 后才能间接推出 $D$ ，那么 $D$ 传递函数依赖于 $AB$ ，不满足3NF。<br>
+若要分解为3NF，同样将不符合要求的拿出来，即分为 $R_1{A,B,C}$ 和 $R_2{C, D}$。</li>
+</ul>
+<h4 id="bcnf">BCNF</h4>
+<ul>
+<li>消除<strong>任何属性</strong>对候选码的传递依赖，即每一个决定因素都包含码，表现为在函数依赖集当中，左边的都包含候选码。</li>
+<li>例：若 $R=(A,B,C)$，$F={AC\rightarrow B,AB\rightarrow C,B\rightarrow C}$，候选码则是 $AC$ 和 $AB$ 。这里<strong>不存在非主属性</strong>的部分函数依赖，但对于 $B\rightarrow C$ 来说，决定因素 $B$ 不包含码，因此它不是BCNF。</li>
+</ul>
+<h3 id="考题">考题</h3>
+<h4 id="求候选码">求候选码</h4>
+<ol>
+<li>观察函数依赖，只出现在左边的一定属于候选码，只出现在右边的一定不属于候选码，两边都出现的有可能是候选码</li>
+<li>对只出现在左边的求闭包，如果可以推出全部属性则加入候选码，如果不能则和可能属于候选码的属性进行组合求闭包</li>
+</ol>
+<h4 id="范式级别判断">范式级别判断</h4>
+<ol>
+<li>求候选码</li>
+<li>写出非主属性、候选码
+非主属性就是未出现在候选码中的属性</li>
+<li>判断2NF（判断非主属性部分依赖）:
+观察<strong>非主属性</strong>的左侧是否<strong>完整</strong>出现了任一候选码（非主属性必须由完整的任一候选码推出），若是则符合2NF</li>
+<li>判断3NF（判断非主属性传递依赖）：
+观察所有非主属性是否是由候选码直接推出，若是则符合3NF</li>
+<li>判断BCNF
+观察每个函数依赖左侧是否包含任一候选码，若是则符合BCNF</li>
+</ol>
+<h4 id="求最小依赖集">求最小依赖集</h4>
+<ol>
+<li>拆分右侧
+<ul>
+<li>例如将 $A\rightarrow BC$ 拆为 $A\rightarrow B$ 和 $A\rightarrow C$</li>
+</ul>
+</li>
+<li>去除自身求闭包
+<ul>
+<li>若有$AB\rightarrow C$，$BC\rightarrow E$，$AE\rightarrow G$，去除 $AB$ 自身能推出的 $C$ ，基于剩余的依赖关系求 $AB$ 的闭包，若 $AB$ 通过剩余的关系也能求出 $C$ ，那么删除 $AB\rightarrow C$ 这个依赖关系</li>
+</ul>
+</li>
+<li>左侧最小化
+<ul>
+<li>例如目前保留的关系有 $ABC\rightarrow D$ ，观察左边的 $ABC$ 当中，$A$ 是否能由 $BC$ 推出，$B$ 是否能由 $AC$ 推出，$C$ 是否能由 $AB$ 推出。假设 $C$ 能被 $AB$ 推出，那么左侧去掉 $C$，更新为 $AB\rightarrow D$</li>
+</ul>
+</li>
+</ol>
+<h4 id="3nf分解">3NF分解</h4>
+<p>设有属性集 $U$，函数依赖集 $F$，其模式分解后应得到多个 $U$ 的子集</p>
+<ol>
+<li>求出最小函数依赖集 $F_{min}$</li>
+<li>观察 $U$，找出其中未在 $F_{min}$ 中出现过的属性，将其分为一个集合。
+例如 $U={A,B,C,D,E,G}$ ，但 $F_{min}$ 中没有关于 $G$ 的依赖关系，则单独划分出 ${G}$</li>
+<li>观察 $F_{min}$ ，若有多个依赖关系的决定因素（即左侧）相同，则均划分到同一个集合中。若没有相同的，则仅将该依赖关系划分到同一个集合。
+例如 $F_{min}$ 中有 ${A\rightarrow B,A\rightarrow C,D\rightarrow E}$ 则划分出 ${ABC}$ 和 ${DE}$</li>
+<li>求出 $F_{min}$ 的候选码，若候选码未上述分类中出现，则单独将候选码分为
+一类。
+例如上述 $F_{min}$ 的候选码为 $ADG$，可知其未出现在各分类中，因此再划分一个集合 ${ADG}$。</li>
+<li>由上述举例可知，其最终的模式分解为 ${G},{ABC},{DE}, {ADG}$</li>
+</ol>
+<h4 id="bcnf分解">BCNF分解</h4>
+<p>没学会</p>
+<h4 id="判断是不是候选码">判断是不是候选码</h4>
+<p>利用候选码的性质判断。</p>
+<ol>
+<li>求闭包，看闭包是否等于属性集</li>
+<li>对要判断的属性集的子集求闭包，看子集的闭包是否等于属性集，若不是则原属性集为候选码</li>
+</ol>
+<h2 id="事务调度">事务调度</h2>
+<h3 id="事务调度的准则">事务调度的准则</h3>
+<ul>
+<li>一组事务的调度必须保证：包含了所有事务的操作指令；一个事务内部的指令顺序必须保持不变</li>
+<li><strong>并行事务调度</strong>必须保证：<strong>可串行化</strong>，将所有可能的串行调度结果推演一遍，对于某个具体的并行调度再执行一遍，看是否能与某个串行调度的结果相同</li>
+<li>判断可串行化的充分条件：冲突可串行化（冲突可串行化一定是可串行化调度，但可串行化调度不一定是冲突可串行化）
+冲突可串行化调度即不交换不同事务的冲突操作次序，也不交换同一事务的两个操作的次序。但可以交换不同事务对不同数据各种操作次序，也可以交换不同事务对同一数据的读取操作次序</li>
+</ul>
+<h3 id="封锁">封锁</h3>
+<h4 id="x锁">X锁</h4>
+<p>写锁，某事务对数据对象上锁后，可读取和修改该数据对象，其他事务不可再对该数据对象添加锁<br>
+表示方法：上锁Xlock()、释放锁Unlock()</p>
+<h4 id="s锁">S锁</h4>
+<p>读锁，某事务对数据对象上锁后，可读取但不可修改该数据对象，其他事务可以对该数据对象添加S锁，但不能添加X锁
+表示方法：上锁Slock()、释放锁Unlock()</p>
+<h4 id="封锁协议">封锁协议</h4>
+<h5 id="一级封锁协议">一级封锁协议</h5>
+<p>写前加写锁，事务结束释放写锁；可防止丢失修改</p>
+<h5 id="二级封锁协议">二级封锁协议</h5>
+<p>写前加写锁，读前加读锁，读完释放读锁，事务结束释放写锁；可防止丢失修改和读脏数据</p>
+<h5 id="三级封锁协议常用支持一致性维护">三级封锁协议（常用：支持一致性维护）</h5>
+<p>写前加写锁，读前加读锁，事务结束释放各锁；可防止丢失修改、读脏数据和不可重复读
+如果所有事务均遵循三级封锁协议，由于其隔离级别高，那么这些事务无论怎样交叉并行，都是可串性化的调度</p>
+<h5 id="两段锁协议2pl">两段锁协议（2PL）</h5>
+<p>三级封锁协议可以保证并发操作的正确性，但由于其太过严苛，对并发度有负面影响。三级封锁协议实际是两段锁协议的特例，是更严格的两段锁协议。<br>
+两段锁协议要求：事务在对任何数据进行读写前，需要获得对该数据的封锁；而当事务在释放任何一个封锁后，不可再获得任何其他封锁。<strong>即：在最后再进行Unlock</strong><br>
+<strong>事务遵循两段锁协议是可串性化的充分条件</strong>，遵循两段锁协议是可能发生死锁的</p>
+<h3 id="考题-1">考题</h3>
+<h4 id="求串行调度结果">求串行调度结果</h4>
+<p>题目会给出两个调度 $T_1$ 、$T_2$ ,分别以$T_1$$T_2$ 和 $T_2$$T_1$ 的顺序运行调度，求出结果即可。</p>
+<h4 id="判断并行调度是否正确">判断并行调度是否正确</h4>
+<p>题目给出并行调度，运行之后和第一问的结果作比较，只要<strong>和串行调度的任意一个顺序结果相同</strong>则说明并行调度正确，否则错误。</p>
+<h4 id="将并行调度改为遵守2pl并求出结果">将并行调度改为遵守2PL并求出结果</h4>
+<p>先按照原调度运行，在读写操作前加锁Xlock(),此时另一调度若想进行读写操作需要wait直至运行中的调度Unlock()。
+一个调度只要Unlock()一次就不能再上锁了，所以<strong>Unlock()要放在一个调度</strong>最后。</p>
+<h2 id="e-r图数据库设计">E-R图（数据库设计）</h2>
+<h3 id="画e-r图">画E-R图</h3>
+<ul>
+<li>矩形：实体集</li>
+<li>双矩形：弱实体集
+弱实体集没有主码，依赖于标识实体集</li>
+<li>菱形：联系集</li>
+<li>椭圆：属性</li>
+<li>双椭圆：多值属性</li>
+<li>虚椭圆：派生属性</li>
+<li>双线：一个实体集全部参与到联系集中</li>
+<li>一对一（1:1） 指向两边的箭头</li>
+<li>一对多（1:n） 一指向多的箭头</li>
+<li>多对多（m:n） 无箭头</li>
+</ul>
+<h3 id="e-r图转换为关系模型">E-R图转换为关系模型</h3>
+<p>第一步：将各个实体的名字转换为各个关系模式的名字<br>
+第二步：实体的属性就是关系的属性，实体的码就是关系的码<br>
+第三步：实体间联系的转换</p>
+<ul>
+<li>1对1联系：在任意一方加入对方的主码并设为其外码，并加入联系本身的属性</li>
+<li>1对n联系：将1方的主码加入n方作为外码，并同时将联系的属性加入n方</li>
+<li>n对m联系：将联系本身转换为一个关系模式，将联系双方的主码加入其中设为码，并将联系的属性也加入其中</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Jaxson Chen
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
